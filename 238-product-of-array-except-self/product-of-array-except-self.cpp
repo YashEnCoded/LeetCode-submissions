@@ -3,21 +3,17 @@
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
-        int mod= 1e9+7;
         int n= nums.size();
-        vector<long long> pre(n+2, 1), suc(n+2, 1);
-        vector<int> ans(n);
-        for(int i=0;i<n;i++){
-            // pre[i+1]= ((pre[i]%mod) *(nums[i]%mod))%mod;
-            pre[i+1]= pre[i]*nums[i];
-
-            // suc[n-1-i]= ((suc[n-i]%mod)* (nums[n-1-i]%mod))%mod;
-            suc[n-1-i]= suc[n-i]* nums[n-1-i];
-        }
+        vector<int> ans(n, 1);
+        
+        int left=1, right=1;
 
         for(int i=0;i<n;i++){
-            // long long cur= ((pre[i]%mod)* (suc[i+1]%mod));
-            ans[i]= (pre[i]* suc[i+1]);
+            ans[i]*=left;
+            left*=nums[i];
+            
+            ans[n-1-i]*=right;
+            right*=nums[n-1-i];
         }
         return ans;
 
@@ -25,3 +21,4 @@ public:
 };
 
 // 17 min
+// Easier approach
