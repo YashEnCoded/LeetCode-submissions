@@ -1,1 +1,1 @@
-<h2>number-of-ways-to-split-array Notes</h2><hr>[ Time taken: 13 m 7 s ]
+<h2>number-of-ways-to-split-array Notes</h2><hr>[ Time taken: 13 m 13 s ]
